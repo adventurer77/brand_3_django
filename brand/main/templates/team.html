@@ -1,0 +1,23 @@
+
+<section class="bg-light" id="team">
+    <div class="container">
+        <div class="row">
+
+            {% for  person in team  %}
+                <div class="col-sm-4">
+                    <div class="team-member"><img class="rounded-circle mx-auto" src="{{person.image.url}}">
+                        <h4>{{person.name}}</h4>
+                        <p class="text-muted">{{person.title}}</p>
+                        <ul class="list-inline social-buttons">
+                            {% for platform, url in person.social_media_links.items %}
+                                <li class="list-inline-item"><a href="{{ url }}"><i class="fa fa-{{ platform }}"></i></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+

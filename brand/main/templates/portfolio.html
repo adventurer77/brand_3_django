@@ -1,0 +1,115 @@
+
+
+<section class="bg-light" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase section-heading">{{title_portfolio|safe}}</h2>
+                <h3 class="text-muted section-subheading">{{under_portfolio_title|safe}}</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for item in portfolio %}
+                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal{{ item.id }}" data-bs-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="{{ item.image_title.url }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ item.title }}</h4>
+                        <p class="text-muted">{{ item.subheading }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+            
+    </div>
+</section> 
+
+            {% for item in portfolio %}    
+                <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal{{ item.id }}">
+                        {% for i in item %}
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-8 mx-auto">
+                                                <div class="modal-body">
+                                                    <h2 class="text-uppercase">{{ i.title }}</h2>
+                                                    <p class="text-muted item-intro">{{ i.subheading}}</p><img class="img-fluid d-block mx-auto" src="{{ i.image_full.url }}">
+                                                    <p>{{ i.description }}</p>
+                                                    <ul class="list-unstyled">
+                                                        <li>{{ i.date }}</li>
+                                                        <li>{{ i.client }}</li>
+                                                        <li>{{ i.category }}</li>
+                                                    </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i>{{portfolio_button|safe}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
+            {% endfor %}
+
+
+
+
+
+
+
+{% comment %} 
+
+<section class="bg-light" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase section-heading">{{title_portfolio|safe}}</h2>
+                <h3 class="text-muted section-subheading">{{under_portfolio_title|safe}}</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for item in portfolio %}
+                <div class="col-sm-6 col-md-4 portfolio-item"><a class="portfolio-link" href="#portfolioModal{{ item.id }}" data-bs-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="{{ item.image_title.url }}">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ item.title }}</h4>
+                        <p class="text-muted">{{ item.category }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+            
+    </div>
+</section> 
+
+            {% for item in portfolio %}    
+                <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal{{ item.id }}">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-8 mx-auto">
+                                            <div class="modal-body">
+                                                <h2 class="text-uppercase">{{ item.title }}</h2>
+                                                <p class="text-muted item-intro">{{ item.subheading}}</p><img class="img-fluid d-block mx-auto" src="{{ item.image_full.url }}">
+                                                <p>{{ itemt.description }}</p>
+                                                <ul class="list-unstyled">
+                                                    <li>Date:{{ item.date }}</li>
+                                                    <li>Client:{{ item.client }}</li>
+                                                    <li>Category:{{ item.category }}</li>
+                                                </ul><button class="btn btn-primary" type="button" data-bs-dismiss="modal"><i class="fa fa-times"></i>{{portfolio_button|safe}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            {% endfor %} {% endcomment %}

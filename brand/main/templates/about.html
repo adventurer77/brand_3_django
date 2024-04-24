@@ -1,0 +1,55 @@
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase">{{title_about|safe}}</h2>
+                <h3 class="text-muted section-subheading">{{under_about_title|safe}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-group timeline">
+                    {% for item in about  %}
+                            
+                            <li class="list-group-item {% cycle 'timeline' 'timeline-inverted' %}">
+
+                                <div class="timeline-image">
+                                    {% if item.image.url %}
+                                        <img class="rounded-circle img-fluid" src="{{ item.image.url }}">
+                                    {% else %}
+                                        <div class="timeline-image-placeholder">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4>{{item.date_heading}}</h4>
+                                        <h4 class="subheading">{{item.subheading}}</h4>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p class="text-muted">{{item.description}}</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            
+                            {% if forloop.last %}
+
+                                <li class="list-group-item timeline-inverted">
+                                    <div class="timeline-image">
+                                        <h4>{{end_about_timeline|safe}}</h4>
+                                    </div>
+                                </li>
+                    
+                            {% endif %}
+                    {% endfor %}
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
