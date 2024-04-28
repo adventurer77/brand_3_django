@@ -14,19 +14,9 @@
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
-    <nav class="navbar navbar-expand-lg fixed-top bg-dark navbar-dark" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="#page-top">Brand</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto text-uppercase">
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+    {% include "includes/nav.html" %}
+    
     <header class="masthead" style="background-image:url({% static 'assets/img/header-bg.jpg'%});">
         <div class="container">
             <div class="intro-text">
@@ -36,31 +26,17 @@
         </div>
     </header>
 
+    
+
     <main id="main">
         {% block content %}
         {% endblock  %}
     </main> <!-- End #main -->
+    <div>
+        {% include 'includes/messages.html' %}
+    </div>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4"><span class="copyright">Copyright&nbsp;© Brand 2023</span></div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-                        <li class="list-inline-item"><a href="#">Terms of Use</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include "includes/footer.html" %}
 
     <script src={% static "assets/bootstrap/js/bootstrap.min.js" %}></script>
     <script src={% static "assets/js/agency.js" %}></script>

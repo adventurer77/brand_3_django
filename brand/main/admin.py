@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Services,About,Team,Clients,Portfolio,PortfolioFilling
+from .models import Services,About,Team,Clients,Portfolio,PortfolioFilling,Contact
 from django.utils.safestring import mark_safe
 # Register your models here.
 
@@ -101,4 +101,7 @@ class PortfolioFillingAdmin(admin.ModelAdmin):
     def photo_src_tag(self,obj):
             if obj.image_full:
                 return mark_safe(f"<img src='{obj.image_full.url}' width=50 height=50>")
+            
+
+admin.site.register(Contact)
         

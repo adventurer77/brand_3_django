@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
@@ -46,7 +47,6 @@ class Team(models.Model):
         verbose_name_plural = "Team"
         ordering = ["sort"]
     
-
     def __str__(self):
         return self.name
     
@@ -100,8 +100,7 @@ class Portfolio(models.Model):
   def __iter__(self):
         for item in self.portfolios.all(): # V3
             yield item
-
-     
+  
   class Meta:
         verbose_name = "Portfolio"
         verbose_name_plural = "Portfolio"
@@ -127,3 +126,26 @@ class PortfolioFilling(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Contact(models.Model):
+    phone_regex = RegexValidator(regex=r"^\+?(380)?\d{9,15}$",
+                                message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, validators=[phone_regex])
+    comment = models.TextField(blank=True, null=True)
+    
+    is_confirmed = models.BooleanField(default=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"
+        ordering = ["-date_created"]
