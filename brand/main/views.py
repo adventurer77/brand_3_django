@@ -53,13 +53,13 @@ class IndexView(TemplateView):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,"Your reservation has been accepted!")
+            messages.success(request,"Thank you for your question, we will contact you as soon as possible.")
             return redirect('main:index')
         else:
             
-            messages.error(request, "There were errors in your reservation form. Please correct and try again.")
+            messages.error(request, "There were errors in your form. Please correct and try again.")
             
-            return redirect( 'main:index')
+            return redirect('main:index')
 
 # def index(request):
 
